@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return 'Vista index';
+        $users = User::orderBy('id')->paginate();
+        return view('users.index',compact('users'));
     }
 
     /**
@@ -37,10 +38,13 @@ class UserController extends Controller
     {
         $user = new User();
         $user ->name = $request -> name;
+        $user ->lastname = $request -> lastname;
         $user ->email = $request -> email;
         $user ->password = $request -> password;
 
         $user -> save();
+
+        return route('users.index');
     }
 
     /**
@@ -51,7 +55,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return 'Hola #'.$id;
+        $user = User::find($id);
+
+        return view('users.details',compact('user'));
     }
 
     /**
