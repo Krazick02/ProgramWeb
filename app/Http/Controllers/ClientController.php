@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id')->paginate();
-        return view('users.index',compact('users'));
+        $clients = Client::orderBy('id')->paginate();
+        return view('clients.index',compact('clients'));
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Users.create');
+        return view('Clients.create');
     }
 
     /**
@@ -36,37 +36,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user ->name = $request -> name;
-        $user ->lastname = $request -> lastname;
-        $user ->email = $request -> email;
-        $user ->password = $request -> password;
+        $client = new Client();
+        $client ->name = $request -> name;
+        $client ->lastname = $request -> lastname;
+        $client ->email = $request -> email;
+        $client ->phone_number = $request -> phone_number;
 
-        $user -> save();
+        $client -> save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('clients.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $client = Client::find($id);
 
-        return view('users.details',compact('user'));
+        return view('clients.details',compact('client'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Client $client)
     {
         //
     }
@@ -86,10 +86,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
         //
     }

@@ -5,10 +5,31 @@
 
 @section('content')
 
-    <h1>Usuarios en la base de datos Users</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach ($users as $user)
-        {{$user->id}} -> {{$user->name}}  <a href="{{ route('users.show',$user) }}" class="btn btn-primary">Ver</a> <br>
+        <tr>
+            <th scope="row">{{$user->id}}</th>
+            <td>{{$user->name}}</td>
+            <td>{{$user->lastname}}</td>
+            <td>
+                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="{{ route('users.show',$user) }}" class="btn btn-info">Details</a>
+                <a href="#" class="btn btn-warning">Edit</a>
+            </td>
+        </tr>
         @endforeach
+    </tbody>
 
-    {{$users->links()}}
+</table>
+{{$users->links()}}
+
 @endsection
