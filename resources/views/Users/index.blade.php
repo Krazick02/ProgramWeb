@@ -1,8 +1,10 @@
+//Hereda de la platilla
 @extends('plantilla')
 
+//Ingresa el campo titulo
 @section('title','Index User')
 
-
+//Agrega el contenido a la seccion content
 @section('content')
 
 <table class="table table-striped">
