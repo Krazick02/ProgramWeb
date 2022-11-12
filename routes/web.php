@@ -30,6 +30,7 @@ Route::get('/users/create',[UserController::class,'create'])->name('users.create
 Route::get('/users/{id}',[UserController::class,'show'])->name('users.show');
 Route::post('/users',[UserController::class,'store'])->name('users.store');
 Route::get('/users/edit/{user}',[UserController::class,'edit'])->name('users.edit');
+Route::post('/users/update',[UserController::class,'update'])->name('users.update');
 
 Route::get('/clients',[ClientController::class,'index'])->name('clients.index');
 Route::get('/clients/create',[ClientController::class,'create'])->name('clients.create');

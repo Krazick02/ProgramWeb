@@ -5,7 +5,7 @@
 
 @section('content')
 
-<form action="{{ route('users.store') }}" method="POST">
+<form action="{{ route('users.update',$user) }}" method="POST">
         @csrf
         <div class="row text-center">
 
@@ -32,15 +32,10 @@
                         <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}"/>
                     </div>
                 </div>
-                <div class="col-lg-6 col-sm-12">
-                    <div class="form-outline mb-4 text-start">
-                        <label class="form-label" for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" />
-                    </div>
-                </div>
             </div>
 
             <div class="col-sm-12">
+                <input type="hidden" name="id" value="{{ $user->id }}">
                 <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
             </div>
         </div>
