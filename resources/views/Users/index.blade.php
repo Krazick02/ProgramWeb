@@ -23,7 +23,7 @@
             <td>
                 <a href="#" class="btn btn-danger">Delete</a>
                 <a href="{{ route('users.show',$user) }}" class="btn btn-info">Details</a>
-                <a href="#" class="btn btn-warning">Edit</a>
+                <a href="{{ route('users.edit',$user) }}" class="btn btn-warning">Edit</a>
             </td>
         </tr>
         @endforeach
