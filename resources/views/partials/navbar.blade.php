@@ -13,7 +13,21 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="{{ route('clients.create') }}">Crear cliente</a>
-          </li>
+        </li>
+
+        @if (isset(Auth::user()->name))
+            <li>{{ Auth::user()->name }}
+
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            @else
+                <li>
+                  <a class="nav-link active" href="{{ route('login') }}">Sing in</a>
+              </li>
+          @endif
         </ul>
       </div>
     </div>

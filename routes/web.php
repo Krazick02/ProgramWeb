@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login',function(){
+    return view('Users.login');
+})->name('login');
+
+Route::get('/home',function(){
+    return view('home');
+})->name('home');
+
 
 Route::get('/',[UserController::class,'index'])->name('users.index');
 Route::get('/users/create',[UserController::class,'create'])->name('users.create');
